@@ -5,26 +5,138 @@ date: "10 de marzo del 2025"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
+## Rank-abundance
+
+A partir de 7 bolsas con fichas de distintos colores se obtuvieron datos de diversidad y abundancia para la comparación de estas mismas
+
+Los datos de abundancia se capturaron en una base de datos
+
+```{r}
+abundance <- read.csv (file = "datos/abundancias.csv")
+abundance
+
 ```
 
-## R Markdown
+Las gráficas de abundancia se realizaron con el paquete "ggplot2"
+```{r}
+library (ggplot2)
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+#bolsa 1
+rank1 <- ggplot(abundance, aes (x=especie, y=bolsa_1))+
+  geom_bar (stat = "identity", fill = (c("purple", "pink", "lightblue", "hotpink2",
+                                         "yellow", "lightgreen", "red", "orange",
+                                         "blue", "darkblue", "darkgreen", "hotpink")))+
+  xlab ("ABUNDANCIAS") + ylab ("ESPECIES")
+  
+rank1
 ```
 
-## Including Plots
+El mismo código anterior se aplicó para cada una de las bolsas
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r echo=FALSE}
+rank2
+rank3
+rank4
+rank5
+rank6
+rank7
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Curvas de rarefacción
+
+Con las mismas bolsas de fichas se tomaron muestras para realizar las curvas de rarefacción, la suma acumulada entre cada muestreo se capturo en una base de datos y posteriormente se realizaron las curvas
+
+```{r}
+sumas <- read.csv(file = "datos/sumas.csv")
+sumas
+
+```
+
+```{r warning=FALSE}
+library(ggplot2)
+
+#bolsa 1
+b1 <- ggplot(sumas, aes( x=muestra, y=bolsa_1))+
+  geom_point(color="red") + geom_line(color="red")+
+  xlab ("MUESTRAS") + ylab ("ESPECIES NUEVAS")
+b1
+```
+
+Se empleó el mismo código para el resto de las bolsas
+
+```{r warning=FALSE}
+b2
+b3
+b4
+b5
+b6
+b7
+```
+
+
+
+## Índices de diversidad Alfa
+
+## Índices de diversidad Beta
+
+
+Se empleó el paquete Vegan para realizar la matriz de distancias con los métodos Jaccard y Bray-Curtis
+
+```{r}
+presencia <- read.csv(file = "datos/presencia.csv")
+
+rownames(presencia)<- presencia$especie
+presencia <- presencia [,-1]
+presencia
+
+```
+
+La base de datos es de tipo binomial de acuerdo a la presencia y ausencia de cada uno de los colores de las fichas como especies, además se modificó para que la columna de especies de caracteres discretos sean los nombres de cada uno de los renglones y de esta forma obtener la matriz de forma correcta
+
+```{r warning=FALSE}
+library(vegan)
+
+jac_matrix <- vegdist (presencia, method="jaccard")
+jac_matrix
+```
+
+Para realizar la matriz de distancias con el método de Bray-Courtis es necesario contar con las abundancias de cada una de las bolsas, por lo que la base de datos empelada es de las abundancias de cada una de las especies, de igual forma se modificaron los nombres de los renglones
+
+```{r}
+
+abundancia <- read.csv(file = "datos/abundancias.csv")
+
+rownames(abundancia)<- abundancia$especie
+abundancia <- abundancia [,-1]
+abundancia
+```
+
+```{r warning=FALSE}
+bray_matrix <- vegdist (abundancia, method="bray")
+bray_matrix
+```
+
+## Preguntas
+
+1. ¿Cómo varían los valores de los índices entre los sitios? ¿Qué diferencias resaltan?
+2. ¿Cuál índice es más sensible a especies raras?
+3. ¿Por qué el índice de Pielou nos da información sobre la equitatividad de la comunidad?
+4. ¿Cuál sitio parece tener mayor diversidad según la curva de rarefacción? ¿Por qué?
+5. ¿Cómo afecta el tamaño de la muestra en la forma de la curva?
+6. ¿Cuál de estos índices es más sensible a la diferencia en abundancias?
+7. ¿Qué interpretación ecológica tienen las diferencias entre sitios?
+8. ¿Cómo interpretas la forma de las curvas de abundancia?
+9. ¿Qué implicaciones tienen para la dominancia de especies?
+10. ¿Qué patrones generales observaste en la diversidad entre los sitios?
+11. ¿Cuál índice te pareció más útil y por qué?
+12. ¿Cómo podrías aplicar este análisis en estudios ecológicos reales?
+
+## Contribuciones del equipo
+
+Xymena Vazquez:
+Michelle Muñoz: bases de datos, gráficas de abundancia, curvas de rarefacción, matrices de distancias
+Jimena Banda: 
+
+
+

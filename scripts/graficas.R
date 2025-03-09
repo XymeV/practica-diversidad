@@ -53,8 +53,73 @@ b7
 
 ## RANK ABUNDANCE
 
+abundance <- read.csv (file = "datos/abundancias.csv")
+abundance
 
+library (ggplot2)
 
+#bolsa 1
+rank1 <- ggplot(abundance, aes (x=especie, y=bolsa_1))+
+  geom_bar (stat = "identity", fill = (c("purple", "pink", "lightblue", "hotpink2",
+                                         "yellow", "lightgreen", "red", "orange",
+                                         "blue", "darkblue", "darkgreen", "hotpink")))+
+  xlab ("ABUNDANCIAS") + ylab ("ESPECIES")
+  
+rank1
+
+#bolsa 2
+rank2 <- ggplot(abundance, aes (x=especie, y=bolsa_2))+
+  geom_bar (stat = "identity", fill = (c("purple", "pink", "lightblue", "hotpink2",
+                                         "yellow", "lightgreen", "red", "orange",
+                                         "blue", "darkblue", "darkgreen", "hotpink")))+
+  xlab ("ABUNDANCIAS") + ylab ("ESPECIES")
+
+rank2
+
+#bolsa 3
+rank3 <- ggplot(abundance, aes (x=especie, y=bolsa_3))+
+  geom_bar (stat = "identity", fill = (c("purple", "pink", "lightblue", "hotpink2",
+                                         "yellow", "lightgreen", "red", "orange",
+                                         "blue", "darkblue", "darkgreen", "hotpink")))+
+  xlab ("ABUNDANCIAS") + ylab ("ESPECIES")
+
+rank3
+
+#bolsa 4
+rank4 <- ggplot(abundance, aes (x=especie, y=bolsa_4))+
+  geom_bar (stat = "identity", fill = (c("purple", "pink", "lightblue", "hotpink2",
+                                         "yellow", "lightgreen", "red", "orange",
+                                         "blue", "darkblue", "darkgreen", "hotpink")))+
+  xlab ("ABUNDANCIAS") + ylab ("ESPECIES")
+
+rank4
+
+#bolsa 5
+rank5 <- ggplot(abundance, aes (x=especie, y=bolsa_5))+
+  geom_bar (stat = "identity", fill = (c("purple", "pink", "lightblue", "hotpink2",
+                                         "yellow", "lightgreen", "red", "orange",
+                                         "blue", "darkblue", "darkgreen", "hotpink")))+
+  xlab ("ABUNDANCIAS") + ylab ("ESPECIES")
+
+rank5
+
+#bolsa 6
+rank6 <- ggplot(abundance, aes (x=especie, y=bolsa_6))+
+  geom_bar (stat = "identity", fill = (c("purple", "pink", "lightblue", "hotpink2",
+                                         "yellow", "lightgreen", "red", "orange",
+                                         "blue", "darkblue", "darkgreen", "hotpink")))+
+  xlab ("ABUNDANCIAS") + ylab ("ESPECIES")
+
+rank6
+
+#bolsa 7
+rank7 <- ggplot(abundance, aes (x=especie, y=bolsa_7))+
+  geom_bar (stat = "identity", fill = (c("purple", "pink", "lightblue", "hotpink2",
+                                         "yellow", "lightgreen", "red", "orange",
+                                         "blue", "darkblue", "darkgreen", "hotpink")))+
+  xlab ("ABUNDANCIAS") + ylab ("ESPECIES")
+
+rank7
 
 
 
