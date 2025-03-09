@@ -135,7 +135,7 @@ bray_matrix
 ## Contribuciones del equipo
 
 Xymena Vazquez:
-Michelle Muñoz: bases de datos, gráficas de abundancia, curvas de rarefacción, matrices de distancias
+Michelle Muñoz: bases de datos, gráficas de abundancia, curvas de rarefacción, matrices de distancias, discusión de preguntas
 Jimena Banda: 
 
 
