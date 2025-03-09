@@ -1,5 +1,4 @@
- #Diversidad alfa 
-
+#Diversidad alfa 
 
 #Indice de Shannon
 shannon<- function (abundancias){
@@ -88,36 +87,5 @@ simpson2(c(14, 10, 3, 3, 2, 2, 2, 1, 1))
 gini(c(14, 10, 3, 3, 2, 2, 2, 1, 1))
 chao1(c(14, 10, 3, 3, 2, 2, 2, 1, 1))
 
-### DIVERSIDAD BETA
-
-
-
-
-## matrices de distancia usando vegdist
-
-# indice jaccard
-
-presencia <- read.csv(file = "datos/presencia.csv")
-
-rownames(presencia)<- presencia$especie
-presencia <- presencia [,-1]
-presencia
-
-library(vegan)
-
-jac_matrix <- vegdist (presencia, method="jaccard")
-jac_matrix
-
-
-# indice Bray-Curtis
-
-abundancia <- read.csv(file = "datos/abundancias.csv")
-
-rownames(abundancia)<- abundancia$especie
-abundancia <- abundancia [,-1]
-abundancia
-
-bray_matrix <- vegdist (abundancia, method="bray")
-bray_matrix
 
 
