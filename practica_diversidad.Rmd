@@ -9,22 +9,18 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+En esta práctica se calcula la diversidad de especies  en diferentes sitios de manera simulada, las cuales son representadas por bolsas con fichas de colores, las cuales que simulan diferentes especies. Cada color representa una especie distinta, y la
+frecuencia de cada ficha es indicativa de la abundancia de esa especie en el sitio.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+El objetivo de esta practica es analizar la estructura de las comunidades con gráficos de abundancias ordenadas, comparar la diversidad entre sitios utilizando medidas de diversidad beta, medir la diversidad alfa con los índices Shannon, Pielou, Simpson, Simpson inverso, Gini, y Chao1  y realizar la curva de rarefacción para cada sitio simulado.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
+```{r}
 summary(cars)
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r pressure}
 plot(pressure)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
