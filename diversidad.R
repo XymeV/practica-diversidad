@@ -85,7 +85,7 @@ jaccard <- function(x,y) {
   return(intersection/union)
 }
 
-#Bolsa 1 
+#Bolsa 1
 jaccard(presencia$bolsa_1, presencia$bolsa_2)
 jaccard(presencia$bolsa_1, presencia$bolsa_3)
 jaccard(presencia$bolsa_1, presencia$bolsa_4)
@@ -127,6 +127,7 @@ jaccard(presencia$bolsa_6, presencia$bolsa_7)
 jaccard(presencia$bolsa_7, presencia$bolsa_7)
 
 
+#Indice de Bray - Curtis
 #Indice de Bray Curtis 
 bray <- function(x,y){
   muestras = pmin(x,y)
