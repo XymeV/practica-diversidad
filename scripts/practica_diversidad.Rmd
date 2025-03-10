@@ -4,6 +4,7 @@ author: "Jimena Banda, Michelle Muñoz y Xymena Vazquez"
 date: "10 de marzo del 2025"
 output: html_document
 ---
+
 ## Introducción
 
 Una comunidad esta conformada por múltiples especies que interactúan entre ellas y ademas, están presentes en un mismo territorio. Para determinar si una comunidad es diversa, generalmente suele tomarse en cuenta su riqueza y la abundancia de estas especies. Existen multiples factores que están involucrados en la determinación de estas comunidades, ya sean factores abioticos o bioticos, que claramente dependen mucho del tipo de organismo que se analice (Konopka A., 2009).
@@ -74,8 +75,8 @@ alfa(c(14, 10, 3, 3, 2, 2, 2, 1, 1))
 
 ```
 
-## Rank-abundance
 
+## Rank-abundance
 A partir de 7 bolsas con fichas de distintos colores se obtuvieron datos de diversidad y abundancia para la comparación de estas mismas
 
 Los datos de abundancia se capturaron en una base de datos
@@ -111,6 +112,7 @@ rank6
 rank7
 ```
 
+
 ## Curvas de rarefacción
 
 Con las mismas bolsas de fichas se tomaron muestras para realizar las curvas de rarefacción, la suma acumulada entre cada muestreo se capturo en una base de datos y posteriormente se realizaron las curvas
@@ -144,11 +146,7 @@ b7
 
 
 
-## Índices de diversidad Alfa
-
 ## Índices de diversidad Beta
-
-
 Se empleó el paquete Vegan para realizar la matriz de distancias con los métodos Jaccard y Bray-Curtis
 
 ```{r}
@@ -185,6 +183,112 @@ bray_matrix <- vegdist (abundancia, method="bray")
 bray_matrix
 ```
 
+
+#Indices beta 
+Para estos índices trabajan directamente sobre la comparación entre las poblaciones,ya que el índice es más específico con las combinaciones, por lo tanto decidimos no englobarlas en una función para no alterar dichas combinaciones. 
+
+```{r warning=FALSE}
+#Indice de Jaccard 
+jaccard <- function(x,y) {  
+  intersection = length(which(x == 1 & y == 1))
+  union = (length(which(x == 1)) + length(which(y == 1))) - intersection
+  return(intersection/union)
+}
+
+#Bolsa 1
+jaccard(presencia$bolsa_1, presencia$bolsa_2)
+jaccard(presencia$bolsa_1, presencia$bolsa_3)
+jaccard(presencia$bolsa_1, presencia$bolsa_4)
+jaccard(presencia$bolsa_1, presencia$bolsa_5)
+jaccard(presencia$bolsa_1, presencia$bolsa_6)
+jaccard(presencia$bolsa_1, presencia$bolsa_7)
+
+#Bolsa 2 
+jaccard(presencia$bolsa_2, presencia$bolsa_2)
+jaccard(presencia$bolsa_2, presencia$bolsa_3)
+jaccard(presencia$bolsa_2, presencia$bolsa_4)
+jaccard(presencia$bolsa_2, presencia$bolsa_5)
+jaccard(presencia$bolsa_2, presencia$bolsa_6)
+jaccard(presencia$bolsa_2, presencia$bolsa_7)
+
+#Bolsa 3 
+jaccard(presencia$bolsa_3, presencia$bolsa_3)
+jaccard(presencia$bolsa_3, presencia$bolsa_4)
+jaccard(presencia$bolsa_3, presencia$bolsa_5)
+jaccard(presencia$bolsa_3, presencia$bolsa_6)
+jaccard(presencia$bolsa_3, presencia$bolsa_7)
+
+#Bolsa 4 
+jaccard(presencia$bolsa_4, presencia$bolsa_4)
+jaccard(presencia$bolsa_4, presencia$bolsa_5)
+jaccard(presencia$bolsa_4, presencia$bolsa_6)
+jaccard(presencia$bolsa_4, presencia$bolsa_7)
+
+#Bolsa 5
+jaccard(presencia$bolsa_5, presencia$bolsa_5)
+jaccard(presencia$bolsa_5, presencia$bolsa_6)
+jaccard(presencia$bolsa_5, presencia$bolsa_7)
+
+#Bolsa 6 
+jaccard(presencia$bolsa_6, presencia$bolsa_6)
+jaccard(presencia$bolsa_6, presencia$bolsa_7)
+
+#Bolsa 7 
+jaccard(presencia$bolsa_7, presencia$bolsa_7)
+
+
+#Indice de Bray - Curtis
+bray <- function(x,y){
+  muestras = pmin(x,y)
+  minimos = sum(muestras)
+  abun = sum(x) + sum(y)
+  return(minimos / abun)
+}
+
+#Bolsa 1 
+bray(abundancia$bolsa_1, abundancia$bolsa_1)
+bray(abundancia$bolsa_1, abundancia$bolsa_3)
+bray(abundancia$bolsa_1, abundancia$bolsa_4)
+bray(abundancia$bolsa_1, abundancia$bolsa_5)
+bray(abundancia$bolsa_1, abundancia$bolsa_6)
+bray(abundancia$bolsa_1, abundancia$bolsa_7)
+
+#Bolsa 2 
+bray(abundancia$bolsa_2, abundancia$bolsa_2)
+bray(abundancia$bolsa_2, abundancia$bolsa_3)
+bray(abundancia$bolsa_2, abundancia$bolsa_4)
+bray(abundancia$bolsa_2, abundancia$bolsa_5)
+bray(abundancia$bolsa_2, abundancia$bolsa_6)
+bray(abundancia$bolsa_2, abundancia$bolsa_7)
+
+#Bolsa 3 
+bray(abundancia$bolsa_3, abundancia$bolsa_3)
+bray(abundancia$bolsa_3, abundancia$bolsa_4)
+bray(abundancia$bolsa_3, abundancia$bolsa_5)
+bray(abundancia$bolsa_3, abundancia$bolsa_6)
+bray(abundancia$bolsa_3, abundancia$bolsa_7)
+
+#Bolsa 4 
+bray(abundancia$bolsa_4, abundancia$bolsa_4)
+bray(abundancia$bolsa_4, abundancia$bolsa_5)
+bray(abundancia$bolsa_4, abundancia$bolsa_6)
+bray(abundancia$bolsa_4, abundancia$bolsa_7)
+
+#Bolsa 5 
+bray(abundancia$bolsa_5, abundancia$bolsa_5)
+bray(abundancia$bolsa_5, abundancia$bolsa_6)
+bray(abundancia$bolsa_5, abundancia$bolsa_7)
+
+#Bolsa 6 
+bray(abundancia$bolsa_6, abundancia$bolsa_6)
+bray(abundancia$bolsa_6, abundancia$bolsa_7)
+
+#Bolsa 7 
+bray(abundancia$bolsa_7, abundancia$bolsa_7)
+
+```
+
+
 ## Preguntas
 
 1. ¿Cómo varían los valores de los índices entre los sitios? ¿Qué diferencias resaltan?
@@ -211,7 +315,6 @@ Nos pareció más útil en índice de Pielou ya que nos dice que tan equitativam
 
 12. ¿Cómo podrías aplicar este análisis en estudios ecológicos reales?
 En comunidades, es importante determinar qué especies se encuentran presentes en una muestra y que tan abundantes son. Para conocer la diversidad de estas, se pueden ocupar los índices de diversidad, si se quieren comparar dos o más poblaciones, se utilizan los índices beta, ya sea igualmente para determinar su abundancia o presencia-ausencia. Conocer si existen una especie dominante o si existe equidad entre ellas es importante para entender el comportamiento del ecosistema y las consecuencias provocadas.
-
 
 
 ## Discusión
