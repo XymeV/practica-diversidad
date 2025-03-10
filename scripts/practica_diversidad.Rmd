@@ -187,13 +187,14 @@ bray_matrix
 7. ¿Qué interpretación ecológica tienen las diferencias entre sitios?
 8. ¿Cómo interpretas la forma de las curvas de abundancia?
 9. ¿Qué implicaciones tienen para la dominancia de especies?
+
 10. ¿Qué patrones generales observaste en la diversidad entre los sitios?
 11. ¿Cuál índice te pareció más útil y por qué?
 12. ¿Cómo podrías aplicar este análisis en estudios ecológicos reales?
 
 ## Contribuciones del equipo
 
-Xymena Vazquez:
+Xymena Vazquez: creación del repositorio, funciones del indice alfa, discusion de preguntas e introducción
 Michelle Muñoz: bases de datos, gráficas de abundancia, curvas de rarefacción, matrices de distancias, discusión de preguntas
 Jimena Banda: 
 
