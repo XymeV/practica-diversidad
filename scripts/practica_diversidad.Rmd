@@ -85,7 +85,7 @@ A partir de 7 bolsas con fichas de distintos colores se obtuvieron datos de dive
 Los datos de abundancia se capturaron en una base de datos
 
 ```{r}
-abundance <- read.csv (file = "datos/abundancias.csv")
+abundance <- read.csv(file = "datos/abundancias.csv")
 abundance
 
 ```
