@@ -196,6 +196,11 @@ bray_matrix
 12. ¿Cómo podrías aplicar este análisis en estudios ecológicos reales?
 
 
+## Discusión
+Los índices de diversidad son de importancia pues nos permiten conocer cómo se compone una población, una comunidad o un ecosistema en relación a las especies e individuos que habitan en él. Esta información a su vez es clave porque nos permite generar interpretaciones sobre cómo estos individuos interactúan entre sí, si hay sinergia en el ambiente o si hay dominancia sobre él. También estos índices nos pueden brindar información a nivel de ecología, que tipo de condiciones climáticas prevalecen, que tipo de alimento o nutrientes se encuentra en el medio, cual es el tipo de suelo, etc. Dentro del área de la microbiología estos índices podrían ser de utilidad para poder establecer la riqueza y abundancia de algunas especies de bacterias, hongos, virus y otros microorganismos dentro de un microbioma y a su vez nos genere información clave de la infracción y aportación de estos al medio donde se encuentran. 
+
+
+
 ## Contribuciones del equipo
 
 Xymena Vazquez: ,indices alfa, discusión de preguntas

@@ -128,7 +128,6 @@ jaccard(presencia$bolsa_7, presencia$bolsa_7)
 
 
 #Indice de Bray - Curtis
-#Indice de Bray Curtis 
 bray <- function(x,y){
   muestras = pmin(x,y)
   minimos = sum(muestras)
