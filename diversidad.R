@@ -46,6 +46,7 @@ alfa<- function(abundancias){
   return(lista_indices)
 }
 
+
 alfa(c(9, 7, 5, 5, 5, 4, 4, 3, 3, 3, 2))
 alfa(c(18, 15, 10, 5, 4, 4, 3, 3, 2, 2, 1, 1))
 alfa(c(67))
@@ -59,23 +60,23 @@ alfa(c(14, 10, 3, 3, 2, 2, 2, 1, 1))
 ## Para las matrices de distancia usando vegdist
 
 #Matriz Jaccard
-presencia <- read.csv(file = "datos/presencia.csv")
-rownames(presencia)<- presencia$especie
-presencia <- presencia [,-1]
-presencia
+presencia2 <- read.csv(file= "datos/presencia2.csv")
+rownames(presencia2)<- presencia2$especie
+presencia2 <- presencia2 [,-1]
+presencia2
 
 library(vegan)
-jac_matrix <- vegdist (presencia, method="jaccard")
+jac_matrix <- vegdist (presencia2, method="jaccard")
 jac_matrix
 
 
 #Matriz Bray-Curtis
-abundancia <- read.csv(file = "datos/abundancias.csv")
-rownames(abundancia)<- abundancia$especie
-abundancia <- abundancia [,-1]
-abundancia
+abundancia2 <- read.csv(file = "datos/abundancias2.csv")
+rownames(abundancia2)<- abundancia2$bolsa
+abundancia2 <- abundancia2 [,-1]
+abundancia2
 
-bray_matrix <- vegdist (abundancia, method="bray")
+bray_matrix <- vegdist (abundancia2, method="bray")
 bray_matrix
 
 #Indice de Jaccard 

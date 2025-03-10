@@ -12,7 +12,6 @@ Una comunidad esta conformada por múltiples especies que interactúan entre ell
 Para determinar que tan diversa es una población, suelen emplearse indices  de diversidad alfa o beta, los cuales cuantifican qué tan diferentes o equitativas son dichas poblaciones, Usualmente se emplean los indices de Shannon, Simpson y Chao1 en la diversidad alfa o el de Jaccard y Bray-Curtis para comparar dos o mas poblaciones (Morris E., et al, 2014).
 
 En esta practica se pretende determinar la diversida alfa y beta de 7 poblaciones simuladas para conocer que tan parecidas o diferentes son entre si mediante una matriz de distancias, curvas de rarefacción y rank-abundance para cada una de ellas.
-## Objetivos
 
 
 ## Indices alfa
@@ -65,6 +64,11 @@ alfa<- function(abundancias){
   return(lista_indices)
 }
 
+```
+Se calcularon los índices Alfa para cada una de las bolsas
+
+```{r}
+
 alfa(c(9, 7, 5, 5, 5, 4, 4, 3, 3, 3, 2))
 alfa(c(18, 15, 10, 5, 4, 4, 3, 3, 2, 2, 1, 1))
 alfa(c(67))
@@ -72,7 +76,6 @@ alfa(c(9, 8, 7, 6, 6, 2,1, 1))
 alfa(c(88))
 alfa(c(13, 12, 12, 12, 11, 7, 4, 3, 1))
 alfa(c(14, 10, 3, 3, 2, 2, 2, 1, 1))
-
 ```
 
 
@@ -147,53 +150,24 @@ b7
 
 
 ## Índices de diversidad Beta
-Se empleó el paquete Vegan para realizar la matriz de distancias con los métodos Jaccard y Bray-Curtis
+
+
+Los índices Beta a diferencia de los índies Alfa nos permiten hacer la comparativa entre dos poblaciones, o en este caso entre bolsas, para estimar la similitud de diversidad entre ellas.
+
+Para calcular el índice de Jaccard se realizó la siguiente función para posteriormnete realizar la comparación por pares de bolsas, es importante observar que en este índice se empleó la base de datos binomial de presencia y ausencia
 
 ```{r}
-presencia <- read.csv(file = "datos/presencia.csv")
-
-rownames(presencia)<- presencia$especie
-presencia <- presencia [,-1]
-presencia
-
-```
-
-La base de datos es de tipo binomial de acuerdo a la presencia y ausencia de cada uno de los colores de las fichas como especies, además se modificó para que la columna de especies de caracteres discretos sean los nombres de cada uno de los renglones y de esta forma obtener la matriz de forma correcta
-
-```{r warning=FALSE}
-library(vegan)
-
-jac_matrix <- vegdist (presencia, method="jaccard")
-jac_matrix
-```
-
-Para realizar la matriz de distancias con el método de Bray-Courtis es necesario contar con las abundancias de cada una de las bolsas, por lo que la base de datos empelada es de las abundancias de cada una de las especies, de igual forma se modificaron los nombres de los renglones
-
-```{r}
-
-abundancia <- read.csv(file = "datos/abundancias.csv")
-
-rownames(abundancia)<- abundancia$especie
-abundancia <- abundancia [,-1]
-abundancia
-```
-
-```{r warning=FALSE}
-bray_matrix <- vegdist (abundancia, method="bray")
-bray_matrix
-```
-
-
-#Indices beta 
-Para estos índices trabajan directamente sobre la comparación entre las poblaciones,ya que el índice es más específico con las combinaciones, por lo tanto decidimos no englobarlas en una función para no alterar dichas combinaciones. 
-
-```{r warning=FALSE}
 #Indice de Jaccard 
 jaccard <- function(x,y) {  
   intersection = length(which(x == 1 & y == 1))
   union = (length(which(x == 1)) + length(which(y == 1))) - intersection
   return(intersection/union)
 }
+
+```
+
+
+```{r warning=FALSE}
 
 #Bolsa 1
 jaccard(presencia$bolsa_1, presencia$bolsa_2)
@@ -236,7 +210,10 @@ jaccard(presencia$bolsa_6, presencia$bolsa_7)
 #Bolsa 7 
 jaccard(presencia$bolsa_7, presencia$bolsa_7)
 
+```
 
+Para calcular el índice de Bray-Curtis tambien se realizó una función en la cual se toman en  cuenta las abundancias de cada una de las especies
+```{r}
 #Indice de Bray - Curtis
 bray <- function(x,y){
   muestras = pmin(x,y)
@@ -245,6 +222,9 @@ bray <- function(x,y){
   return(minimos / abun)
 }
 
+```
+
+```{r}
 #Bolsa 1 
 bray(abundancia$bolsa_1, abundancia$bolsa_1)
 bray(abundancia$bolsa_1, abundancia$bolsa_3)
@@ -285,21 +265,67 @@ bray(abundancia$bolsa_6, abundancia$bolsa_7)
 
 #Bolsa 7 
 bray(abundancia$bolsa_7, abundancia$bolsa_7)
+```
 
+
+Se empleó el paquete Vegan para realizar la matriz de distancias con los métodos Jaccard y Bray-Curtis
+
+```{r}
+presencia2 <- read.csv(file= "datos/presencia2.csv")
+rownames(presencia2)<- presencia2$especie
+presencia2 <- presencia2 [,-1]
+presencia2
+
+```
+
+La base de datos es de tipo binomial de acuerdo a la presencia y ausencia de cada uno de los colores de las fichas como especies, además se modificó para que la columna de especies de caracteres discretos sean los nombres de cada uno de los renglones y de esta forma obtener la matriz de forma correcta
+
+```{r warning=FALSE}
+library(vegan)
+
+jac_matrix <- vegdist (presencia2, method="jaccard")
+jac_matrix
+```
+
+Para realizar la matriz de distancias con el método de Bray-Courtis es necesario contar con las abundancias de cada una de las bolsas, por lo que la base de datos empelada es de las abundancias de cada una de las especies, de igual forma se modificaron los nombres de los renglones
+
+```{r}
+
+abundancia2 <- read.csv(file = "datos/abundancias2.csv")
+rownames(abundancia2)<- abundancia2$bolsa
+abundancia2 <- abundancia2 [,-1]
+abundancia2
+
+```
+
+```{r warning=FALSE}
+bray_matrix <- vegdist (abundancia2, method="bray")
+bray_matrix
 ```
 
 
 ## Preguntas
 
 1. ¿Cómo varían los valores de los índices entre los sitios? ¿Qué diferencias resaltan?
+Las diferencias de los valores en las matrices de distancias son dados por la presencia de los colores dentro de ellas, aunque esto afecta directamente al índice de Jaccard ya que este no toma en cuenta las abundancias y la distribución de los individuos dentro de la población. En el índice de Bray-Curtis los valores ademas de ser dependientes de las diversidad y abundancias, cambian de acuerdo a la comparación de de las bolsas. Sin embargo, los valores en las matrices son muy similares.
+
 2. ¿Cuál índice es más sensible a especies raras?
+Jaccard es más sensible ya que no se toma en cuenta la abundancia de las especies, por lo que los singletons y doubletons toman lugar como una especie con mayor abundancia, lo que puede crear sesgo en el valor.
+
 3. ¿Por qué el índice de Pielou nos da información sobre la equitatividad de la comunidad?
+Da un valor ajustado de acuerdo al máximo del conjunto de datos, por lo que esto se toam como un valor de comparación ante los resultados obtenidos y de esta manera determinar si se encuentra cerca o lejos de la equitatividad.
+
 4. ¿Cuál sitio parece tener mayor diversidad según la curva de rarefacción? ¿Por qué?
+De acuerdo al número de especies, la bolsa 2 tienen un número mayor de especies por lo que en la curva de rarefaccion salen nuevas especies en cada muestreo hasta alcanzar una línea horizontal en la curva.
 
-5. ¿Cómo afecta el tamaño de la muestra en la forma de la curva? A medida que disminuye el tamaño de las muestras, la cantidad de especies encontradas debería aumentar hasta llegar a un punto donde a pesar de que se sigan tomando muestras el número de las especies siga siendo el mismo y la curva en ese punto deje de crecer exponencialmente. 
+5. ¿Cómo afecta el tamaño de la muestra en la forma de la curva? 
+A medida que disminuye el tamaño de las muestras, la cantidad de especies encontradas debería aumentar hasta llegar a un punto donde a pesar de que se sigan tomando muestras el número de las especies siga siendo el mismo y la curva en ese punto deje de crecer exponencialmente. 
 
-6. ¿Cuál de estos índices es más sensible a la diferencia en abundancias? Los índices más sensibles a la deferencia de abundancias son los índices alfa pues estos índices trabajan sobre la riqueza y la equidad, esta última es directamente afectada sobre la abundancia porque a partir de ella se determinará si una especie domina o no sobre el sitio de estudio.  
-7. ¿Qué interpretación ecológica tienen las diferencias entre sitios? Principalmente la diversidad de especies, esto podría proporcionar información ecológica de importancia como podría ser el efecto de la temperatura y condiciones ambientales, el acceso a alimento o incluso como se están interaccionando las especies (si hay la competencia, depredación, etc).  
+6. ¿Cuál de estos índices es más sensible a la diferencia en abundancias?
+Los índices más sensibles a la deferencia de abundancias son los índices alfa pues estos índices trabajan sobre la riqueza y la equidad, esta última es directamente afectada sobre la abundancia porque a partir de ella se determinará si una especie domina o no sobre el sitio de estudio.  
+
+7. ¿Qué interpretación ecológica tienen las diferencias entre sitios?
+Principalmente la diversidad de especies, esto podría proporcionar información ecológica de importancia como podría ser el efecto de la temperatura y condiciones ambientales, el acceso a alimento o incluso como se están interaccionando las especies (si hay la competencia, depredación, etc).  
 
 8. ¿Cómo interpretas la forma de las curvas de abundancia? Todas las curvas se distribuyen de una manera muy diferente entre si principalmente porque la cantidad de individuo por especie no está normalizada, hay mucha variedad, sin embargo, en dos muestras solo se obtuvo un color de fichas, las curvas de estas fichas son las que más ajustadas se visualizan pues no hay variación entre los individuos de la población. 
 
@@ -318,7 +344,7 @@ En comunidades, es importante determinar qué especies se encuentran presentes e
 
 
 ## Discusión
-Los índices de diversidad son de importancia pues nos permiten conocer cómo se compone una población, una comunidad o un ecosistema en relación a las especies e individuos que habitan en él. Esta información a su vez es clave porque nos permite generar interpretaciones sobre cómo estos individuos interactúan entre sí, si hay sinergia en el ambiente o si hay dominancia sobre él. También estos índices nos pueden brindar información a nivel de ecología, que tipo de condiciones climáticas prevalecen, que tipo de alimento o nutrientes se encuentra en el medio, cual es el tipo de suelo, etc. Dentro del área de la microbiología estos índices podrían ser de utilidad para poder establecer la riqueza y abundancia de algunas especies de bacterias, hongos, virus y otros microorganismos dentro de un microbioma y a su vez nos genere información clave de la infracción y aportación de estos al medio donde se encuentran. 
+Los índices de diversidad son de importancia pues nos permiten conocer cómo se compone una población, una comunidad o un ecosistema en relación a las especies e individuos que habitan en él. Esta información es clave porque nos permite generar interpretaciones sobre cómo los individuos dentro de una población o entre poblaciones interactúan, si hay sinergia en el ambiente o si hay dominancia sobre él. También estos índices nos pueden brindar información a nivel de ecología, que tipo de condiciones climáticas prevalecen, que tipo de alimento o nutrientes se encuentra en el medio, cual es el tipo de suelo, etc. Dentro del área de la microbiología estos índices son de utilidad para establecer la riqueza y abundancia de algunas especies de bacterias, hongos, virus y otros microorganismos dentro de un microbioma y con ello obtener información clave de la infracción y aportación de estas relaciones al medio donde se encuentran. 
 
 ## Referencias bibliográficas
 1.- Allan Konopka, What is microbial community ecology?, The ISME Journal, Volume 3, Issue 11, November 2009, Pages 1223–1230, https://doi.org/10.1038/ismej.2009.88
@@ -327,12 +353,8 @@ Los índices de diversidad son de importancia pues nos permiten conocer cómo se
 
 ## Contribuciones del equipo
 
-<<<<<<< HEAD
 Xymena Vazquez: creación del repositorio, funciones del indice alfa, discusion de preguntas e introducción
-=======
-Xymena Vazquez: ,indices alfa, discusión de preguntas
->>>>>>> 02f246e23b44000cde185746f95f13ad96a584a9
-Michelle Muñoz: bases de datos, gráficas de abundancia, curvas de rarefacción, matrices de distancias, discusión de preguntas
+Michelle Muñoz: bases de datos, gráficas de abundancia, curvas de rarefacción, matrices de distancias, discusión de preguntas, formato de Rmarkdown
 Jimena Banda: indices beta, discusión de preguntas, discusión
 
 
