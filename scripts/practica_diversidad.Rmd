@@ -182,20 +182,25 @@ bray_matrix
 2. ¿Cuál índice es más sensible a especies raras?
 3. ¿Por qué el índice de Pielou nos da información sobre la equitatividad de la comunidad?
 4. ¿Cuál sitio parece tener mayor diversidad según la curva de rarefacción? ¿Por qué?
-5. ¿Cómo afecta el tamaño de la muestra en la forma de la curva?
-6. ¿Cuál de estos índices es más sensible a la diferencia en abundancias?
-7. ¿Qué interpretación ecológica tienen las diferencias entre sitios?
-8. ¿Cómo interpretas la forma de las curvas de abundancia?
+
+5. ¿Cómo afecta el tamaño de la muestra en la forma de la curva? A medida que disminuye el tamaño de las muestras, la cantidad de especies encontradas debería aumentar hasta llegar a un punto donde a pesar de que se sigan tomando muestras el número de las especies siga siendo el mismo y la curva en ese punto deje de crecer exponencialmente. 
+
+6. ¿Cuál de estos índices es más sensible a la diferencia en abundancias? Los índices más sensibles a la deferencia de abundancias son los índices alfa pues estos índices trabajan sobre la riqueza y la equidad, esta última es directamente afectada sobre la abundancia porque a partir de ella se determinará si una especie domina o no sobre el sitio de estudio.  
+7. ¿Qué interpretación ecológica tienen las diferencias entre sitios? Principalmente la diversidad de especies, esto podría proporcionar información ecológica de importancia como podría ser el efecto de la temperatura y condiciones ambientales, el acceso a alimento o incluso como se están interaccionando las especies (si hay la competencia, depredación, etc).  
+
+8. ¿Cómo interpretas la forma de las curvas de abundancia? Todas las curvas se distribuyen de una manera muy diferente entre si principalmente porque la cantidad de individuo por especie no está normalizada, hay mucha variedad, sin embargo, en dos muestras solo se obtuvo un color de fichas, las curvas de estas fichas son las que más ajustadas se visualizan pues no hay variación entre los individuos de la población. 
+
 9. ¿Qué implicaciones tienen para la dominancia de especies?
 10. ¿Qué patrones generales observaste en la diversidad entre los sitios?
 11. ¿Cuál índice te pareció más útil y por qué?
 12. ¿Cómo podrías aplicar este análisis en estudios ecológicos reales?
 
+
 ## Contribuciones del equipo
 
-Xymena Vazquez:
+Xymena Vazquez: ,indices alfa, discusión de preguntas
 Michelle Muñoz: bases de datos, gráficas de abundancia, curvas de rarefacción, matrices de distancias, discusión de preguntas
-Jimena Banda: 
+Jimena Banda: indices beta, discusión de preguntas, discusión
 
 
 
