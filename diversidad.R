@@ -135,6 +135,22 @@ bray <- function(x,y){
   return(minimos / abun)
 }
 
+beta<- function(abundancias){
+  lista_beta<-list( 
+  jaccard= jaccard(abundancias),
+  bray= bray(abundancias)
+  )
+  return(lista_beta)
+}
+
+beta(abundancia$bolsa_1, abundancia$bolsa_1)
+beta(abundancia$bolsa_1, abundancia$bolsa_3)
+beta(abundancia$bolsa_1, abundancia$bolsa_4)
+beta(abundancia$bolsa_1, abundancia$bolsa_5)
+beta(abundancia$bolsa_1, abundancia$bolsa_6)
+beta (abundancia$bolsa_1, abundancia$bolsa_7)
+
+
 #Bolsa 1 
 bray(abundancia$bolsa_1, abundancia$bolsa_1)
 bray(abundancia$bolsa_1, abundancia$bolsa_3)
