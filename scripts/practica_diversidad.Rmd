@@ -182,21 +182,35 @@ bray_matrix
 2. ¿Cuál índice es más sensible a especies raras?
 3. ¿Por qué el índice de Pielou nos da información sobre la equitatividad de la comunidad?
 4. ¿Cuál sitio parece tener mayor diversidad según la curva de rarefacción? ¿Por qué?
-5. ¿Cómo afecta el tamaño de la muestra en la forma de la curva?
-6. ¿Cuál de estos índices es más sensible a la diferencia en abundancias?
-7. ¿Qué interpretación ecológica tienen las diferencias entre sitios?
-8. ¿Cómo interpretas la forma de las curvas de abundancia?
+
+5. ¿Cómo afecta el tamaño de la muestra en la forma de la curva? A medida que disminuye el tamaño de las muestras, la cantidad de especies encontradas debería aumentar hasta llegar a un punto donde a pesar de que se sigan tomando muestras el número de las especies siga siendo el mismo y la curva en ese punto deje de crecer exponencialmente. 
+
+6. ¿Cuál de estos índices es más sensible a la diferencia en abundancias? Los índices más sensibles a la deferencia de abundancias son los índices alfa pues estos índices trabajan sobre la riqueza y la equidad, esta última es directamente afectada sobre la abundancia porque a partir de ella se determinará si una especie domina o no sobre el sitio de estudio.  
+7. ¿Qué interpretación ecológica tienen las diferencias entre sitios? Principalmente la diversidad de especies, esto podría proporcionar información ecológica de importancia como podría ser el efecto de la temperatura y condiciones ambientales, el acceso a alimento o incluso como se están interaccionando las especies (si hay la competencia, depredación, etc).  
+
+8. ¿Cómo interpretas la forma de las curvas de abundancia? Todas las curvas se distribuyen de una manera muy diferente entre si principalmente porque la cantidad de individuo por especie no está normalizada, hay mucha variedad, sin embargo, en dos muestras solo se obtuvo un color de fichas, las curvas de estas fichas son las que más ajustadas se visualizan pues no hay variación entre los individuos de la población. 
+
 9. ¿Qué implicaciones tienen para la dominancia de especies?
 
 10. ¿Qué patrones generales observaste en la diversidad entre los sitios?
 11. ¿Cuál índice te pareció más útil y por qué?
 12. ¿Cómo podrías aplicar este análisis en estudios ecológicos reales?
 
+
+## Discusión
+Los índices de diversidad son de importancia pues nos permiten conocer cómo se compone una población, una comunidad o un ecosistema en relación a las especies e individuos que habitan en él. Esta información a su vez es clave porque nos permite generar interpretaciones sobre cómo estos individuos interactúan entre sí, si hay sinergia en el ambiente o si hay dominancia sobre él. También estos índices nos pueden brindar información a nivel de ecología, que tipo de condiciones climáticas prevalecen, que tipo de alimento o nutrientes se encuentra en el medio, cual es el tipo de suelo, etc. Dentro del área de la microbiología estos índices podrían ser de utilidad para poder establecer la riqueza y abundancia de algunas especies de bacterias, hongos, virus y otros microorganismos dentro de un microbioma y a su vez nos genere información clave de la infracción y aportación de estos al medio donde se encuentran. 
+
+
+
 ## Contribuciones del equipo
 
+<<<<<<< HEAD
 Xymena Vazquez: creación del repositorio, funciones del indice alfa, discusion de preguntas e introducción
+=======
+Xymena Vazquez: ,indices alfa, discusión de preguntas
+>>>>>>> 02f246e23b44000cde185746f95f13ad96a584a9
 Michelle Muñoz: bases de datos, gráficas de abundancia, curvas de rarefacción, matrices de distancias, discusión de preguntas
-Jimena Banda: 
+Jimena Banda: indices beta, discusión de preguntas, discusión
 
 
 
