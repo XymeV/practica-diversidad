@@ -1,4 +1,4 @@
-# ## DIVERSIDAD ALFA
+### DIVERSIDAD ALFA
 
 #Indice de Shannon
 shannon<- function (abundancias){
@@ -56,30 +56,21 @@ alfa(c(14, 10, 3, 3, 2, 2, 2, 1, 1))
 
 
 ### DIVERSIDAD BETA
+## Para las matrices de distancia usando vegdist
 
-
-
-
-## matrices de distancia usando vegdist
-
-# indice jaccard
-
+#Matriz Jaccard
 presencia <- read.csv(file = "datos/presencia.csv")
-
 rownames(presencia)<- presencia$especie
 presencia <- presencia [,-1]
 presencia
 
 library(vegan)
-
 jac_matrix <- vegdist (presencia, method="jaccard")
 jac_matrix
 
 
-# indice Bray-Curtis
-
+#Matriz Bray-Curtis
 abundancia <- read.csv(file = "datos/abundancias.csv")
-
 rownames(abundancia)<- abundancia$especie
 abundancia <- abundancia [,-1]
 abundancia
@@ -87,4 +78,100 @@ abundancia
 bray_matrix <- vegdist (abundancia, method="bray")
 bray_matrix
 
+#Indice de Jaccard 
+jaccard <- function(x,y) {  
+  intersection = length(which(x == 1 & y == 1))
+  union = (length(which(x == 1)) + length(which(y == 1))) - intersection
+  return(intersection/union)
+}
 
+#Bolsa 1 
+jaccard(presencia$bolsa_1, presencia$bolsa_2)
+jaccard(presencia$bolsa_1, presencia$bolsa_3)
+jaccard(presencia$bolsa_1, presencia$bolsa_4)
+jaccard(presencia$bolsa_1, presencia$bolsa_5)
+jaccard(presencia$bolsa_1, presencia$bolsa_6)
+jaccard(presencia$bolsa_1, presencia$bolsa_7)
+
+#Bolsa 2 
+jaccard(presencia$bolsa_2, presencia$bolsa_2)
+jaccard(presencia$bolsa_2, presencia$bolsa_3)
+jaccard(presencia$bolsa_2, presencia$bolsa_4)
+jaccard(presencia$bolsa_2, presencia$bolsa_5)
+jaccard(presencia$bolsa_2, presencia$bolsa_6)
+jaccard(presencia$bolsa_2, presencia$bolsa_7)
+
+#Bolsa 3 
+jaccard(presencia$bolsa_3, presencia$bolsa_3)
+jaccard(presencia$bolsa_3, presencia$bolsa_4)
+jaccard(presencia$bolsa_3, presencia$bolsa_5)
+jaccard(presencia$bolsa_3, presencia$bolsa_6)
+jaccard(presencia$bolsa_3, presencia$bolsa_7)
+
+#Bolsa 4 
+jaccard(presencia$bolsa_4, presencia$bolsa_4)
+jaccard(presencia$bolsa_4, presencia$bolsa_5)
+jaccard(presencia$bolsa_4, presencia$bolsa_6)
+jaccard(presencia$bolsa_4, presencia$bolsa_7)
+
+#Bolsa 5
+jaccard(presencia$bolsa_5, presencia$bolsa_5)
+jaccard(presencia$bolsa_5, presencia$bolsa_6)
+jaccard(presencia$bolsa_5, presencia$bolsa_7)
+
+#Bolsa 6 
+jaccard(presencia$bolsa_6, presencia$bolsa_6)
+jaccard(presencia$bolsa_6, presencia$bolsa_7)
+
+#Bolsa 7 
+jaccard(presencia$bolsa_7, presencia$bolsa_7)
+
+
+#Indice de Bray Curtis 
+bray <- function(x,y){
+  muestras = pmin(x,y)
+  minimos = sum(muestras)
+  abun = sum(x) + sum(y)
+  return(minimos / abun)
+}
+
+#Bolsa 1 
+bray(abundancia$bolsa_1, abundancia$bolsa_1)
+bray(abundancia$bolsa_1, abundancia$bolsa_3)
+bray(abundancia$bolsa_1, abundancia$bolsa_4)
+bray(abundancia$bolsa_1, abundancia$bolsa_5)
+bray(abundancia$bolsa_1, abundancia$bolsa_6)
+bray(abundancia$bolsa_1, abundancia$bolsa_7)
+
+#Bolsa 2 
+bray(abundancia$bolsa_2, abundancia$bolsa_2)
+bray(abundancia$bolsa_2, abundancia$bolsa_3)
+bray(abundancia$bolsa_2, abundancia$bolsa_4)
+bray(abundancia$bolsa_2, abundancia$bolsa_5)
+bray(abundancia$bolsa_2, abundancia$bolsa_6)
+bray(abundancia$bolsa_2, abundancia$bolsa_7)
+
+#Bolsa 3 
+bray(abundancia$bolsa_3, abundancia$bolsa_3)
+bray(abundancia$bolsa_3, abundancia$bolsa_4)
+bray(abundancia$bolsa_3, abundancia$bolsa_5)
+bray(abundancia$bolsa_3, abundancia$bolsa_6)
+bray(abundancia$bolsa_3, abundancia$bolsa_7)
+
+#Bolsa 4 
+bray(abundancia$bolsa_4, abundancia$bolsa_4)
+bray(abundancia$bolsa_4, abundancia$bolsa_5)
+bray(abundancia$bolsa_4, abundancia$bolsa_6)
+bray(abundancia$bolsa_4, abundancia$bolsa_7)
+
+#Bolsa 5 
+bray(abundancia$bolsa_5, abundancia$bolsa_5)
+bray(abundancia$bolsa_5, abundancia$bolsa_6)
+bray(abundancia$bolsa_5, abundancia$bolsa_7)
+
+#Bolsa 6 
+bray(abundancia$bolsa_6, abundancia$bolsa_6)
+bray(abundancia$bolsa_6, abundancia$bolsa_7)
+
+#Bolsa 7 
+bray(abundancia$bolsa_7, abundancia$bolsa_7)
